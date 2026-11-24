@@ -1,0 +1,402 @@
+[
+  {
+    "id": "T01",
+    "test": "WarehouseTests.test_best_fit",
+    "goal": "Выбор ячейки",
+    "precondition": "Новый склад с L1=40,L2=50 клиента C1 и L3=10 клиента C2",
+    "input": "L1=40, A01=100, A02=60",
+    "expected": "L1→A02",
+    "actual": "L1→A02",
+    "status": "PASS"
+  },
+  {
+    "id": "T02",
+    "test": "WarehouseTests.test_tie",
+    "goal": "Равные свободные объёмы",
+    "precondition": "Изолированный набор двух ячеек",
+    "input": "B=10,A=10,q=10",
+    "expected": "Выбрана A",
+    "actual": "Выбрана A",
+    "status": "PASS"
+  },
+  {
+    "id": "T03",
+    "test": "WarehouseTests.test_invalid_quantity",
+    "goal": "Тип и знак количества",
+    "precondition": "Новый склад с L1=40,L2=50 клиента C1 и L3=10 клиента C2",
+    "input": "0,-1,1.5,True",
+    "expected": "Каждый ввод отклонён без изменений",
+    "actual": "Каждый ввод отклонён без изменений",
+    "status": "PASS"
+  },
+  {
+    "id": "T04",
+    "test": "WarehouseTests.test_overflow",
+    "goal": "Партия в одной ячейке",
+    "precondition": "Новый склад с L1=40,L2=50 клиента C1 и L3=10 клиента C2",
+    "input": "61 при свободных 50 и 10",
+    "expected": "Отказ без изменений",
+    "actual": "Отказ без изменений",
+    "status": "PASS"
+  },
+  {
+    "id": "T05",
+    "test": "WarehouseTests.test_duplicate_lot",
+    "goal": "Уникальность партии",
+    "precondition": "Новый склад с L1=40,L2=50 клиента C1 и L3=10 клиента C2",
+    "input": "повтор L1",
+    "expected": "Отказ без изменений",
+    "actual": "Отказ без изменений",
+    "status": "PASS"
+  },
+  {
+    "id": "T06",
+    "test": "WarehouseTests.test_unknown_client",
+    "goal": "Известный владелец",
+    "precondition": "Новый склад с L1=40,L2=50 клиента C1 и L3=10 клиента C2",
+    "input": "OTHER",
+    "expected": "Отказ без изменений",
+    "actual": "Отказ без изменений",
+    "status": "PASS"
+  },
+  {
+    "id": "T07",
+    "test": "WarehouseTests.test_timestamp",
+    "goal": "Обязательный пояс",
+    "precondition": "Новый склад с L1=40,L2=50 клиента C1 и L3=10 клиента C2",
+    "input": "2026-09-01",
+    "expected": "Отказ без изменений",
+    "actual": "Отказ без изменений",
+    "status": "PASS"
+  },
+  {
+    "id": "T08",
+    "test": "WarehouseTests.test_fifo",
+    "goal": "Контроль FIFO",
+    "precondition": "Новый склад с L1=40,L2=50 клиента C1 и L3=10 клиента C2",
+    "input": "O1=P1:60",
+    "expected": "План L1:40,L2:20",
+    "actual": "План L1:40,L2:20",
+    "status": "PASS"
+  },
+  {
+    "id": "T09",
+    "test": "WarehouseTests.test_owner_isolation",
+    "goal": "Разделение владельцев",
+    "precondition": "Новый склад с L1=40,L2=50 клиента C1 и L3=10 клиента C2",
+    "input": "C1 запрашивает95 при C1=90,C2=10",
+    "expected": "Отказ без чужого товара",
+    "actual": "Отказ без чужого товара",
+    "status": "PASS"
+  },
+  {
+    "id": "T10",
+    "test": "WarehouseTests.test_reserved_not_reused",
+    "goal": "Повторное использование резерва",
+    "precondition": "Новый склад с L1=40,L2=50 клиента C1 и L3=10 клиента C2",
+    "input": "O1=60, O2=31",
+    "expected": "O2 отклонён; O1 сохранён",
+    "actual": "O2 отклонён; O1 сохранён",
+    "status": "PASS"
+  },
+  {
+    "id": "T11",
+    "test": "WarehouseTests.test_order_atomicity",
+    "goal": "Атомарность всего заказа",
+    "precondition": "Новый склад с L1=40,L2=50 клиента C1 и L3=10 клиента C2",
+    "input": "P1:60,P2:1",
+    "expected": "Отказ; резерв P1 не изменён",
+    "actual": "Отказ; резерв P1 не изменён",
+    "status": "PASS"
+  },
+  {
+    "id": "T12",
+    "test": "WarehouseTests.test_blocked",
+    "goal": "Исключение блокировки",
+    "precondition": "Новый склад с L1=40,L2=50 клиента C1 и L3=10 клиента C2",
+    "input": "blocked L1, O1=60",
+    "expected": "Отказ без изменений",
+    "actual": "Отказ без изменений",
+    "status": "PASS"
+  },
+  {
+    "id": "T13",
+    "test": "WarehouseTests.test_ship",
+    "goal": "Списание по плану",
+    "precondition": "Новый склад с L1=40,L2=50 клиента C1 и L3=10 клиента C2",
+    "input": "O1=60, SHIP",
+    "expected": "L1/L2/L3=0/30/10",
+    "actual": "L1/L2/L3=0/30/10",
+    "status": "PASS"
+  },
+  {
+    "id": "T14",
+    "test": "WarehouseTests.test_repeat_ship",
+    "goal": "Повторная выдача",
+    "precondition": "Новый склад с L1=40,L2=50 клиента C1 и L3=10 клиента C2",
+    "input": "SHIP O1 дважды",
+    "expected": "Второй отказ; состояние прежнее",
+    "actual": "Второй отказ; состояние прежнее",
+    "status": "PASS"
+  },
+  {
+    "id": "T15",
+    "test": "WarehouseTests.test_cancel",
+    "goal": "Освобождение резерва",
+    "precondition": "Новый склад с L1=40,L2=50 клиента C1 и L3=10 клиента C2",
+    "input": "O1=60, CANCEL, SHIP",
+    "expected": "Доступно 90; выдача отклонена",
+    "actual": "Доступно 90; выдача отклонена",
+    "status": "PASS"
+  },
+  {
+    "id": "T16",
+    "test": "WarehouseTests.test_block_after_reserve",
+    "goal": "Блокировка после резерва",
+    "precondition": "Новый склад с L1=40,L2=50 клиента C1 и L3=10 клиента C2",
+    "input": "O1=60, затем blocked L2",
+    "expected": "Выдача отклонена; снимок прежний",
+    "actual": "Выдача отклонена; снимок прежний",
+    "status": "PASS"
+  },
+  {
+    "id": "T17",
+    "test": "WarehouseTests.test_duplicate_order",
+    "goal": "Уникальность заказа",
+    "precondition": "Новый склад с L1=40,L2=50 клиента C1 и L3=10 клиента C2",
+    "input": "повтор O1",
+    "expected": "Отказ без изменений",
+    "actual": "Отказ без изменений",
+    "status": "PASS"
+  },
+  {
+    "id": "T18",
+    "test": "WarehouseTests.test_empty_order",
+    "goal": "Пустые строки",
+    "precondition": "Новый склад с L1=40,L2=50 клиента C1 и L3=10 клиента C2",
+    "input": "O1={} ",
+    "expected": "Отказ без изменений",
+    "actual": "Отказ без изменений",
+    "status": "PASS"
+  },
+  {
+    "id": "T19",
+    "test": "WarehouseTests.test_timezone_order",
+    "goal": "Сравнение моментов",
+    "precondition": "Новый склад с L1=40,L2=50 клиента C1 и L3=10 клиента C2",
+    "input": "10:00+03:00 против08:00Z",
+    "expected": "Выбрана L1",
+    "actual": "Выбрана L1",
+    "status": "PASS"
+  },
+  {
+    "id": "T20",
+    "test": "InputRegressionTests.test_missing_timestamp_is_domain_error",
+    "goal": "Тип даты",
+    "precondition": "Новый пустой склад",
+    "input": "None,123,[],{}",
+    "expected": "ValueError; снимок прежний",
+    "actual": "ValueError; снимок прежний",
+    "status": "PASS"
+  },
+  {
+    "id": "T21",
+    "test": "InputRegressionTests.test_exact_capacity_and_empty_stock",
+    "goal": "Границы вместимости",
+    "precondition": "Новый пустой склад",
+    "input": "60+100; ещё1; выдать160",
+    "expected": "Дополнительный приход отклонён; остаток0",
+    "actual": "Дополнительный приход отклонён; остаток0",
+    "status": "PASS"
+  },
+  {
+    "id": "T22",
+    "test": "InputRegressionTests.test_same_instant_uses_seq",
+    "goal": "Разрешение равных моментов",
+    "precondition": "Новый пустой склад",
+    "input": "Z в09:00+03, A в06:00Z",
+    "expected": "Выбрана Z с меньшим seq",
+    "actual": "Выбрана Z с меньшим seq",
+    "status": "PASS"
+  },
+  {
+    "id": "T23",
+    "test": "DatabaseTests.test_round_trip",
+    "goal": "Сохранение снимка",
+    "precondition": "Новая SQLite :memory: со схемой и снимком после контрольной выдачи",
+    "input": "состояние после выдачи",
+    "expected": "Полное равенство load и входа",
+    "actual": "Полное равенство load и входа",
+    "status": "PASS"
+  },
+  {
+    "id": "T24",
+    "test": "DatabaseTests.test_foreign_key",
+    "goal": "Ссылка на клиента",
+    "precondition": "Новая SQLite :memory: со схемой и снимком после контрольной выдачи",
+    "input": "UPDATE client_id=OTHER",
+    "expected": "IntegrityError",
+    "actual": "IntegrityError",
+    "status": "PASS"
+  },
+  {
+    "id": "T25",
+    "test": "DatabaseTests.test_duplicate",
+    "goal": "Уникальность ключа",
+    "precondition": "Новая SQLite :memory: со схемой и снимком после контрольной выдачи",
+    "input": "повтор client C1",
+    "expected": "IntegrityError",
+    "actual": "IntegrityError",
+    "status": "PASS"
+  },
+  {
+    "id": "T26",
+    "test": "DatabaseTests.test_negative",
+    "goal": "Неотрицательный остаток",
+    "precondition": "Новая SQLite :memory: со схемой и снимком после контрольной выдачи",
+    "input": "quantity=-1",
+    "expected": "IntegrityError",
+    "actual": "IntegrityError",
+    "status": "PASS"
+  },
+  {
+    "id": "T27",
+    "test": "DatabaseTests.test_capacity",
+    "goal": "Вместимость БД",
+    "precondition": "Новая SQLite :memory: со схемой и снимком после контрольной выдачи",
+    "input": "L3.quantity=61 вA02",
+    "expected": "IntegrityError",
+    "actual": "IntegrityError",
+    "status": "PASS"
+  },
+  {
+    "id": "T28",
+    "test": "DatabaseTests.test_capacity_reduction",
+    "goal": "Уменьшение ёмкости",
+    "precondition": "Новая SQLite :memory: со схемой и снимком после контрольной выдачи",
+    "input": "A02.capacity=1",
+    "expected": "IntegrityError",
+    "actual": "IntegrityError",
+    "status": "PASS"
+  },
+  {
+    "id": "T29",
+    "test": "DatabaseTests.test_status",
+    "goal": "Статус заказа",
+    "precondition": "Новая SQLite :memory: со схемой и снимком после контрольной выдачи",
+    "input": "status=NEW",
+    "expected": "IntegrityError",
+    "actual": "IntegrityError",
+    "status": "PASS"
+  },
+  {
+    "id": "T30",
+    "test": "DatabaseTests.test_owner_and_product",
+    "goal": "Составные связи резерва",
+    "precondition": "Новая SQLite :memory: со схемой и снимком после контрольной выдачи",
+    "input": "L1 заменить чужой L3",
+    "expected": "IntegrityError",
+    "actual": "IntegrityError",
+    "status": "PASS"
+  },
+  {
+    "id": "T31",
+    "test": "DatabaseTests.test_movement_sign",
+    "goal": "Знак движения",
+    "precondition": "Новая SQLite :memory: со схемой и снимком после контрольной выдачи",
+    "input": "SHIP.quantity=10",
+    "expected": "IntegrityError",
+    "actual": "IntegrityError",
+    "status": "PASS"
+  },
+  {
+    "id": "T32",
+    "test": "DatabaseTests.test_not_null",
+    "goal": "Обязательная дата",
+    "precondition": "Новая SQLite :memory: со схемой и снимком после контрольной выдачи",
+    "input": "received_at=NULL",
+    "expected": "IntegrityError",
+    "actual": "IntegrityError",
+    "status": "PASS"
+  },
+  {
+    "id": "T33",
+    "test": "DatabaseTests.test_invalid_time",
+    "goal": "Дата без пояса в БД",
+    "precondition": "Новая SQLite :memory: со схемой и снимком после контрольной выдачи",
+    "input": "received_at=2026-09-01",
+    "expected": "IntegrityError",
+    "actual": "IntegrityError",
+    "status": "PASS"
+  },
+  {
+    "id": "T34",
+    "test": "DatabaseTests.test_strict_quantity",
+    "goal": "Целый тип БД",
+    "precondition": "Новая SQLite :memory: со схемой и снимком после контрольной выдачи",
+    "input": "quantity=1.5",
+    "expected": "IntegrityError",
+    "actual": "IntegrityError",
+    "status": "PASS"
+  },
+  {
+    "id": "T35",
+    "test": "DatabaseTests.test_transaction_rollback",
+    "goal": "Откат сохранения",
+    "precondition": "Новая SQLite :memory: со схемой и снимком после контрольной выдачи",
+    "input": "снимок без клиента C1",
+    "expected": "IntegrityError; прежняя БД полностью сохранена",
+    "actual": "IntegrityError; прежняя БД полностью сохранена",
+    "status": "PASS"
+  },
+  {
+    "id": "T36",
+    "test": "DatabaseTests.test_invalid_snapshot_preserves_database",
+    "goal": "Баланс снимка",
+    "precondition": "Новая SQLite :memory: со схемой и снимком после контрольной выдачи",
+    "input": "L3.quantity=9 без изменения журнала",
+    "expected": "ValueError; прежняя БД сохранена",
+    "actual": "ValueError; прежняя БД сохранена",
+    "status": "PASS"
+  },
+  {
+    "id": "T37",
+    "test": "DatabaseTests.test_reserved_cancelled_round_trip",
+    "goal": "Исторический план",
+    "precondition": "Новая SQLite :memory: со схемой и снимком после контрольной выдачи; затем новый доменный снимок L1=10",
+    "input": "L1=10,O1=3; сохранить резерв и отмену",
+    "expected": "Оба снимка восстановлены без различий",
+    "actual": "Оба снимка восстановлены без различий",
+    "status": "PASS"
+  },
+  {
+    "id": "T38",
+    "test": "DatabaseTests.test_integrity",
+    "goal": "Целостность SQLite",
+    "precondition": "Новая SQLite :memory: со схемой и снимком после контрольной выдачи",
+    "input": "foreign_key_check; integrity_check",
+    "expected": "[]; ok",
+    "actual": "[]; ok",
+    "status": "PASS"
+  },
+  {
+    "id": "T39",
+    "test": "CrossLanguageTests.test_all_shared_operations",
+    "goal": "Равенство реализаций",
+    "precondition": "Независимый новый склад; JDK 21 для сравнения языков",
+    "input": "data/scenarios.tsv",
+    "expected": "92 полных состояния равны; ERROR не меняет состояние",
+    "actual": "92 полных состояния равны; ERROR не меняет состояние",
+    "status": "PASS"
+  },
+  {
+    "id": "T40",
+    "test": "CrossLanguageTests.test_control_oracle",
+    "goal": "Независимый расчёт",
+    "precondition": "Независимый новый склад; JDK 21 для сравнения языков",
+    "input": "data/demo.tsv",
+    "expected": "FIFO40+20; доступно30; остатки0/30/10; ячейки30/10",
+    "actual": "FIFO40+20; доступно30; остатки0/30/10; ячейки30/10",
+    "status": "PASS"
+  }
+]

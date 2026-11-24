@@ -1,0 +1,7 @@
+Regression protocol 2026-11-24
+original: received_at=None -> TypeError: fromisoformat: argument must be str; state unchanged=True
+fixed: received_at=None -> ValueError: Время приёмки должно быть строкой ISO 8601; state unchanged=True
+Python 3.10 original parser Z: exit=1; ValueError: Invalid isoformat string: '2026-09-01T09:00:00Z'
+Fixed parser Z: 2026-09-01T09:00:00+00:00
+initial SQL check: date without offset ACCEPTED (defect)
+fixed SQL check: date without offset REJECTED

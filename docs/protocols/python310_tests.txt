@@ -1,0 +1,46 @@
+test_all_shared_operations (test_extended.CrossLanguageTests) ... ok
+test_control_oracle (test_extended.CrossLanguageTests) ... ok
+test_capacity (test_extended.DatabaseTests) ... ok
+test_capacity_reduction (test_extended.DatabaseTests) ... ok
+test_duplicate (test_extended.DatabaseTests) ... ok
+test_foreign_key (test_extended.DatabaseTests) ... ok
+test_integrity (test_extended.DatabaseTests) ... ok
+test_invalid_snapshot_preserves_database (test_extended.DatabaseTests) ... ok
+test_invalid_time (test_extended.DatabaseTests) ... ok
+test_movement_sign (test_extended.DatabaseTests) ... ok
+test_negative (test_extended.DatabaseTests) ... ok
+test_not_null (test_extended.DatabaseTests) ... ok
+test_owner_and_product (test_extended.DatabaseTests) ... ok
+test_reserved_cancelled_round_trip (test_extended.DatabaseTests) ... ok
+test_round_trip (test_extended.DatabaseTests) ... ok
+test_status (test_extended.DatabaseTests) ... ok
+test_strict_quantity (test_extended.DatabaseTests) ... ok
+test_transaction_rollback (test_extended.DatabaseTests) ... ok
+test_exact_capacity_and_empty_stock (test_extended.InputRegressionTests) ... ok
+test_missing_timestamp_is_domain_error (test_extended.InputRegressionTests) ... ok
+test_same_instant_uses_seq (test_extended.InputRegressionTests) ... ok
+test_best_fit (test_warehouse.WarehouseTests) ... ok
+test_block_after_reserve (test_warehouse.WarehouseTests) ... ok
+test_blocked (test_warehouse.WarehouseTests) ... ok
+test_cancel (test_warehouse.WarehouseTests) ... ok
+test_duplicate_lot (test_warehouse.WarehouseTests) ... ok
+test_duplicate_order (test_warehouse.WarehouseTests) ... ok
+test_empty_order (test_warehouse.WarehouseTests) ... ok
+test_fifo (test_warehouse.WarehouseTests) ... ok
+test_invalid_quantity (test_warehouse.WarehouseTests) ... ok
+test_order_atomicity (test_warehouse.WarehouseTests) ... ok
+test_overflow (test_warehouse.WarehouseTests) ... ok
+test_owner_isolation (test_warehouse.WarehouseTests) ... ok
+test_repeat_ship (test_warehouse.WarehouseTests) ... ok
+test_reserved_not_reused (test_warehouse.WarehouseTests) ... ok
+test_ship (test_warehouse.WarehouseTests) ... ok
+test_tie (test_warehouse.WarehouseTests) ... ok
+test_timestamp (test_warehouse.WarehouseTests) ... ok
+test_timezone_order (test_warehouse.WarehouseTests) ... ok
+test_unknown_client (test_warehouse.WarehouseTests) ... ok
+
+----------------------------------------------------------------------
+Ran 40 tests in 0.501s
+
+OK
+Compared 92 operation snapshots in 15 scenarios

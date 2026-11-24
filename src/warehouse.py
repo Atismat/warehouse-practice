@@ -35,7 +35,9 @@ def receive(state, lot_id, client, product, quantity, received_at):
         raise ValueError('Некорректный или повторный номер партии')
     if client not in state['clients'] or product not in state['products']:
         raise ValueError('Неизвестный клиент или товар')
-    timestamp = datetime.fromisoformat(received_at)
+    if not isinstance(received_at, str):
+        raise ValueError('Время приёмки должно быть строкой ISO 8601')
+    timestamp = datetime.fromisoformat(received_at.replace("Z", "+00:00"))
     if timestamp.tzinfo is None:
         raise ValueError('Необходим часовой пояс времени приёмки')
     cell_id = best_fit(state['cells'], quantity)

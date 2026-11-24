@@ -1,0 +1,46 @@
+test_all_shared_operations (test_extended.CrossLanguageTests.test_all_shared_operations) ... ok
+test_control_oracle (test_extended.CrossLanguageTests.test_control_oracle) ... ok
+test_capacity (test_extended.DatabaseTests.test_capacity) ... ok
+test_capacity_reduction (test_extended.DatabaseTests.test_capacity_reduction) ... ok
+test_duplicate (test_extended.DatabaseTests.test_duplicate) ... ok
+test_foreign_key (test_extended.DatabaseTests.test_foreign_key) ... ok
+test_integrity (test_extended.DatabaseTests.test_integrity) ... ok
+test_invalid_snapshot_preserves_database (test_extended.DatabaseTests.test_invalid_snapshot_preserves_database) ... ok
+test_invalid_time (test_extended.DatabaseTests.test_invalid_time) ... ok
+test_movement_sign (test_extended.DatabaseTests.test_movement_sign) ... ok
+test_negative (test_extended.DatabaseTests.test_negative) ... ok
+test_not_null (test_extended.DatabaseTests.test_not_null) ... ok
+test_owner_and_product (test_extended.DatabaseTests.test_owner_and_product) ... ok
+test_reserved_cancelled_round_trip (test_extended.DatabaseTests.test_reserved_cancelled_round_trip) ... ok
+test_round_trip (test_extended.DatabaseTests.test_round_trip) ... ok
+test_status (test_extended.DatabaseTests.test_status) ... ok
+test_strict_quantity (test_extended.DatabaseTests.test_strict_quantity) ... ok
+test_transaction_rollback (test_extended.DatabaseTests.test_transaction_rollback) ... ok
+test_exact_capacity_and_empty_stock (test_extended.InputRegressionTests.test_exact_capacity_and_empty_stock) ... ok
+test_missing_timestamp_is_domain_error (test_extended.InputRegressionTests.test_missing_timestamp_is_domain_error) ... ok
+test_same_instant_uses_seq (test_extended.InputRegressionTests.test_same_instant_uses_seq) ... ok
+test_best_fit (test_warehouse.WarehouseTests.test_best_fit) ... ok
+test_block_after_reserve (test_warehouse.WarehouseTests.test_block_after_reserve) ... ok
+test_blocked (test_warehouse.WarehouseTests.test_blocked) ... ok
+test_cancel (test_warehouse.WarehouseTests.test_cancel) ... ok
+test_duplicate_lot (test_warehouse.WarehouseTests.test_duplicate_lot) ... ok
+test_duplicate_order (test_warehouse.WarehouseTests.test_duplicate_order) ... ok
+test_empty_order (test_warehouse.WarehouseTests.test_empty_order) ... ok
+test_fifo (test_warehouse.WarehouseTests.test_fifo) ... ok
+test_invalid_quantity (test_warehouse.WarehouseTests.test_invalid_quantity) ... ok
+test_order_atomicity (test_warehouse.WarehouseTests.test_order_atomicity) ... ok
+test_overflow (test_warehouse.WarehouseTests.test_overflow) ... ok
+test_owner_isolation (test_warehouse.WarehouseTests.test_owner_isolation) ... ok
+test_repeat_ship (test_warehouse.WarehouseTests.test_repeat_ship) ... ok
+test_reserved_not_reused (test_warehouse.WarehouseTests.test_reserved_not_reused) ... ok
+test_ship (test_warehouse.WarehouseTests.test_ship) ... ok
+test_tie (test_warehouse.WarehouseTests.test_tie) ... ok
+test_timestamp (test_warehouse.WarehouseTests.test_timestamp) ... ok
+test_timezone_order (test_warehouse.WarehouseTests.test_timezone_order) ... ok
+test_unknown_client (test_warehouse.WarehouseTests.test_unknown_client) ... ok
+
+----------------------------------------------------------------------
+Ran 40 tests in 0.495s
+
+OK
+Compared 92 operation snapshots in 15 scenarios

@@ -1,0 +1,19 @@
+PRAGMA foreign_key_check
+[]
+
+PRAGMA integrity_check
+[('ok',)]
+
+SELECT lot_id,quantity,reserved,quantity-reserved AS available FROM lot_balance ORDER BY seq
+[('L1', 0, 0, 0), ('L2', 30, 0, 30), ('L3', 10, 0, 10)]
+
+SELECT cell_id,capacity,used FROM cell_balance ORDER BY cell_id
+[('A01', 100, 30), ('A02', 60, 10)]
+
+SELECT l.lot_id FROM lot_balance l WHERE reserved>quantity OR quantity<>(SELECT COALESCE(SUM(m.quantity),0) FROM movement m WHERE m.lot_id=l.lot_id)
+[]
+
+SELECT r.order_id,r.product_id FROM reservation r JOIN outbound_order o USING(order_id)
+ JOIN order_line ol ON ol.order_id=r.order_id AND ol.product_id=r.product_id
+ GROUP BY r.order_id,r.product_id HAVING SUM(r.quantity)<>MAX(ol.quantity)
+[]
