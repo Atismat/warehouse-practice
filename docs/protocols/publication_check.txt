@@ -1,0 +1,7 @@
+Checked 2026-11-24
+Repository https://github.com/Atismat/warehouse-practice
+Tested code commit 40b3b49f554e34cd0e374b8696959f3c66130392
+Clean clone tests: 40, OK; 92 snapshots in 15 scenarios
+Compared 44 tracked files: byte-identical to tested local project
+Original analytical commit 3980e9e remains an ancestor
+Only these publication protocols are added after the clean-clone check; no code changes
